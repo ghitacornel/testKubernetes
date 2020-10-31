@@ -14,7 +14,7 @@ import java.util.Random;
 public class PersonService {
 
     final private static int THRESHOLD_MIN = 10;
-    final private static int THRESHOLD_MAX = 20;
+    final private static int THRESHOLD_MAX = 200;
 
     private final Map<String, Person> map = new HashMap<>();
     final PersonClientService client;
