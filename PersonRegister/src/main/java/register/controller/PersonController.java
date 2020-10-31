@@ -22,10 +22,9 @@ public class PersonController {
     }
 
     @PostMapping
-    public Person register() {
-        Person person = personService.register();
+    public void register(Person person) {
+        personService.register(person);
         log.info("register " + person);
-        return person;
     }
 
     @DeleteMapping(path = "/{id}")

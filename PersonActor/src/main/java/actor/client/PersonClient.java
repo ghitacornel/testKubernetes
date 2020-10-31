@@ -11,8 +11,8 @@ public interface PersonClient {
     @RequestLine("GET")
     List<Person> findAll();
 
-    @RequestLine("POST /")
-    Person register();
+    @RequestLine("POST")
+    void register(Person person);
 
     @RequestLine("DELETE /{id}")
     void unregister(@Param("id") String id);

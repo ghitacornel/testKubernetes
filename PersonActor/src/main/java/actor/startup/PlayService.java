@@ -20,7 +20,7 @@ public class PlayService {
         personService.initialise();
     }
 
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 1000)
     public void play() {
         personService.play();
     }

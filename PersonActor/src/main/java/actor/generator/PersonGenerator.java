@@ -1,8 +1,8 @@
-package register.generator;
+package actor.generator;
 
+import actor.model.Person;
 import com.github.javafaker.Faker;
 import org.springframework.stereotype.Component;
-import register.model.Person;
 
 @Component
 public class PersonGenerator {

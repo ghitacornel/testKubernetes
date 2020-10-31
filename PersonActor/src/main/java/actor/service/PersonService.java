@@ -1,6 +1,7 @@
 package actor.service;
 
 import actor.client.PersonClientService;
+import actor.generator.PersonGenerator;
 import actor.model.Person;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class PersonService {
 
     private final Map<String, Person> map = new HashMap<>();
     final PersonClientService client;
+    final PersonGenerator personGenerator;
 
     public void initialise() {
 
@@ -50,7 +52,11 @@ public class PersonService {
 
         if (map.size() >= THRESHOLD_MAX) return;
 
-        Person person = client.register();
+        Person person;
+        do {
+            person = personGenerator.generate();
+        } while (map.containsKey(person.getId()));
+        client.register(person);
         map.put(person.getId(), person);
         System.out.println("registered " + person);
     }
@@ -61,7 +67,11 @@ public class PersonService {
 
         Person person = getRandomPerson();
         if (person == null) return;
-        client.unregister(person.getId());
+        try {
+            client.unregister(person.getId());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         map.remove(person.getId());
         System.out.println("unregistered " + person);
     }
