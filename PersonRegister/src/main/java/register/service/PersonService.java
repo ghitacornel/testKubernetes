@@ -1,10 +1,11 @@
 package register.service;
 
+import dao.model.Person;
+import dao.repositories.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import register.generator.PersonGenerator;
-import register.model.Person;
-import register.repositories.PersonRepository;
+
 
 import java.util.List;
 

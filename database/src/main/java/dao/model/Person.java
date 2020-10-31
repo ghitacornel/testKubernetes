@@ -1,4 +1,4 @@
-package register.model;
+package dao.model;
 
 import lombok.Data;
 
