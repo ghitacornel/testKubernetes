@@ -13,6 +13,9 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class PersonService {
 
+    final private static int THRESHOLD_MIN = 10;
+    final private static int THRESHOLD_MAX = 20;
+
     private final Map<String, Person> map = new HashMap<>();
     final PersonClientService client;
 
@@ -21,10 +24,8 @@ public class PersonService {
         // load
         client.loadAll().forEach(person -> map.put(person.getId(), person));
 
-        // if empty ensure at least some data is present
-        if (map.isEmpty()) {
-            for (int i = 0; i < 10; i++) register();
-        }
+        // ensure THRESHOLD_MIN
+        for (int i = map.size(); i < THRESHOLD_MIN; i++) register();
 
     }
 
@@ -46,12 +47,18 @@ public class PersonService {
     }
 
     private void register() {
+
+        if (map.size() >= THRESHOLD_MAX) return;
+
         Person person = client.register();
         map.put(person.getId(), person);
         System.out.println("registered " + person);
     }
 
     private void unregister() {
+
+        if (map.size() <= THRESHOLD_MIN) return;
+
         Person person = getRandomPerson();
         if (person == null) return;
         client.unregister(person.getId());
