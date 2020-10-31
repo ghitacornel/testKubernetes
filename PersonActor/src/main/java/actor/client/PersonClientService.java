@@ -18,7 +18,7 @@ public class PersonClientService {
     }
 
     public void register(Person person) {
-        getClient().post().bodyValue(person);
+        getClient().post().bodyValue(person).retrieve();
     }
 
     public void unregister(String id) {
