@@ -2,10 +2,9 @@ package dao.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,5 +20,8 @@ public class Person {
 
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
+
+    @OneToMany(mappedBy = "person")
+    private List<Product> products = new ArrayList<>();
 
 }

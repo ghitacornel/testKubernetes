@@ -1,4 +1,4 @@
-package products.model;
+package dao.model;
 
 import lombok.Data;
 
