@@ -1,4 +1,4 @@
-package register.service;
+package register.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

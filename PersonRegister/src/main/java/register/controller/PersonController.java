@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import register.model.Person;
-import register.service.PersonService;
+import register.services.PersonService;
 
 import java.util.List;
 
