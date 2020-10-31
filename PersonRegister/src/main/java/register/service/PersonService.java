@@ -23,10 +23,8 @@ public class PersonService {
         return person;
     }
 
-    public Person unregister(String id) {
-        Person person = personRepository.findById(id).get();
-        personRepository.delete(person);
-        return person;
+    public void unregister(String id) {
+        personRepository.deleteById(id);
     }
 
     public Person findById(String id) {

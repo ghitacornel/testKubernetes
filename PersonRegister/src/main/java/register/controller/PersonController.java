@@ -34,9 +34,9 @@ public class PersonController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public Person unregister(@PathVariable("id") String id) {
+    public void unregister(@PathVariable("id") String id) {
         log.info("unregister person with id " + id);
-        return personService.unregister(id);
+        personService.unregister(id);
     }
 
 }

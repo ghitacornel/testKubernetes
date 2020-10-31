@@ -68,7 +68,7 @@ public class PersonService {
 
         Person person = getRandomPerson();
         if (person == null) return;
-        person = client.unregister(person.getId());
+        client.unregister(person.getId());
         map.remove(person.getId());
         System.out.println("unregistered " + person);
     }

@@ -25,7 +25,7 @@ public class PersonClientService {
         return getClient().put().bodyValue(person).retrieve().toEntity(Person.class).block().getBody();
     }
 
-    public Person unregister(String id) {
-        return getClient().delete().uri("/" + id).retrieve().toEntity(Person.class).block().getBody();
+    public void unregister(String id) {
+        getClient().delete().uri("/" + id).retrieve().toBodilessEntity().block();
     }
 }
