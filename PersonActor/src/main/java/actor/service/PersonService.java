@@ -57,7 +57,7 @@ public class PersonService {
         do {
             person = personGenerator.generate();
         } while (map.containsKey(person.getId()));
-        client.register(person);
+        person = client.register(person);
         map.put(person.getId(), person);
         System.out.println("registered " + person);
     }
@@ -68,7 +68,7 @@ public class PersonService {
 
         Person person = getRandomPerson();
         if (person == null) return;
-        client.unregister(person.getId());
+        person = client.unregister(person.getId());
         map.remove(person.getId());
         System.out.println("unregistered " + person);
     }

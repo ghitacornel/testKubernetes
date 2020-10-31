@@ -24,12 +24,12 @@ public class PersonService {
     }
 
     public Person unregister(String id) {
-        Person person = personRepository.getOne(id);
+        Person person = personRepository.findById(id).get();
         personRepository.delete(person);
         return person;
     }
 
     public Person findById(String id) {
-        return personRepository.getOne(id);
+        return personRepository.findById(id).get();
     }
 }
