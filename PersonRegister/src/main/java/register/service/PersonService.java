@@ -18,11 +18,18 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public void register(Person person) {
+    public Person register(Person person) {
         personRepository.save(person);
+        return person;
     }
 
-    public void unregister(String id) {
-        personRepository.deleteById(id);
+    public Person unregister(String id) {
+        Person person = personRepository.getOne(id);
+        personRepository.delete(person);
+        return person;
+    }
+
+    public Person findById(String id) {
+        return personRepository.getOne(id);
     }
 }

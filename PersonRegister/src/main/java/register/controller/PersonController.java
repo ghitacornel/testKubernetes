@@ -21,16 +21,22 @@ public class PersonController {
         return personService.findAll();
     }
 
-    @PostMapping
-    public void register(Person person) {
-        personService.register(person);
+    @GetMapping(path = "/{id}")
+    public Person findById(@PathVariable("id") String id) {
+        log.info("find by id " + id);
+        return personService.findById(id);
+    }
+
+    @PutMapping
+    public Person register(@RequestBody Person person) {
         log.info("register " + person);
+        return personService.register(person);
     }
 
     @DeleteMapping(path = "/{id}")
-    public void unregister(@PathVariable("id") String id) {
-        personService.unregister(id);
+    public Person unregister(@PathVariable("id") String id) {
         log.info("unregister person with id " + id);
+        return personService.unregister(id);
     }
 
 }

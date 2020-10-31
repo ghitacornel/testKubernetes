@@ -6,6 +6,7 @@ import actor.model.Person;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -17,7 +18,7 @@ public class PersonService {
     final private static int THRESHOLD_MIN = 10;
     final private static int THRESHOLD_MAX = 200;
 
-    private final Map<String, Person> map = new HashMap<>();
+    private final Map<String, Person> map = Collections.synchronizedMap(new HashMap<>());
     final PersonClientService client;
     final PersonGenerator personGenerator;
 
@@ -75,6 +76,7 @@ public class PersonService {
     private void check() {
         Person person = getRandomPerson();
         if (person == null) return;
+        client.check(person.getId());
         System.out.println("check " + person);
     }
 }
