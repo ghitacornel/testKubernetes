@@ -26,16 +26,25 @@ public class PersonController {
         return personService.findAll();
     }
 
+    @Timed
+    @Counted
+    @Logged
     @GetMapping(path = "/{id}")
     public Person findById(@PathVariable("id") String id) {
         return personService.findById(id);
     }
 
+    @Timed
+    @Counted
+    @Logged
     @PutMapping
     public Person register(@RequestBody Person person) {
         return personService.register(person);
     }
 
+    @Timed
+    @Counted
+    @Logged
     @DeleteMapping(path = "/{id}")
     public void unregister(@PathVariable("id") String id) {
         personService.unregister(id);
