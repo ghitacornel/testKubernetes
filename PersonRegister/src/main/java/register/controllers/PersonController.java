@@ -3,6 +3,7 @@ package register.controllers;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import register.interceptors.Monitor;
 import register.model.Person;
 import register.services.PersonService;
 
@@ -15,6 +16,7 @@ public class PersonController {
 
     final PersonService personService;
 
+    @Monitor
     @GetMapping
     public List<Person> findAll() {
         log.info("find all persons");
